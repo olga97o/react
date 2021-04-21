@@ -5,12 +5,12 @@ import App from './App/App';
 
 const store = {
     user: {
-        firstName: 'Robot',
-        lastName: 'Mr'
+        firstName: 'Shop',
+        lastName: 'Online'
     },
     avatar: {
-        image : 'https://xakep.ru/wp-content/uploads/2016/07/mr-robot-season-2.jpg',
-        alt: 'mr robot'
+        image : 'https://st2.depositphotos.com/4142621/6898/i/600/depositphotos_68989301-stock-photo-online-shopping-concept-3d-render.jpg',
+        alt: 'Online shop'
     }
 }
 ReactDOM.render(

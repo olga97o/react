@@ -4,7 +4,7 @@ export default function Header ({userData}) {
     const {firstName, lastName} = userData;
     return (
         <header>
-        Hello, Friend! I am {lastName} {firstName}!
+        Hello, user! We are {lastName} {firstName}!
         </header>
     );
 }
