@@ -1,0 +1,13 @@
+.card {
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-content: space-between;
+  padding: 5px;
+  margin: 5px 10px;
+  border:2px black solid;
+  width: 380px;
+}
+button {
+  height: fit-content;
+}
