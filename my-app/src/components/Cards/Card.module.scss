@@ -1,13 +1,32 @@
 .card {
   text-align: left;
   display: flex;
-  justify-content: space-between;
-  align-content: space-between;
+  flex-direction: column;
   padding: 5px;
-  margin: 5px 10px;
-  border:2px black solid;
-  width: 380px;
+  margin: 5px 3px;
+  background: rgba(41, 43, 83, .03);
+  width: fit-content;
+  border: 1px cyan solid;
+  border-radius: 5px;
 }
-button {
-  height: fit-content;
+
+.buttonDelete {
+  width:  fit-content;
+  background: red;
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+
+  &:hover {
+    cursor: pointer;
+    color: black;
+    background: #a81d26;
+    transform: scale(1.2);
+  }
 }
+
+.imgCard {
+  width: 200px;
+}
+

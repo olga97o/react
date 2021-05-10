@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useRef, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {mockedApiCall} from "../../api/mockedApi";
 import Card from './Card';
 import CardsCreationForm from "./CardsCreationForm";
@@ -9,23 +9,21 @@ export default function CardsContainer() {
 
     useEffect(() => {
         mockedApiCall().then(data => setCardsArray(data))
-    })
-    //const [cardsArray, setCardsArray] = cardsData;
+    }, cardsArray)
 
-    function handleAddNewCard (valueInput) {
+    function handleAddNewCard(valueInput) {
         setCardsArray([
             ...cardsArray,
             valueInput
         ]);
-        console.log('before', cardsArray);
-        console.log('valueInput', valueInput);
     }
 
-
-    function handleDeleteCard() {
-
-        //setCardsArray, clickedSubmitButtonForm
-        //cardsArray.splice(card.key, cardKey)
+    function handleDeleteCard(id) {
+        const idx = cardsArray.findIndex(card => card.id !== id)
+        setCardsArray([
+            ...cardsArray.slice(0, idx),
+            ...cardsArray.slice(idx + 1)
+        ]);
     }
 
     return (
