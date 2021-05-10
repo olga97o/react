@@ -4,15 +4,19 @@ import Card from './Card';
 import CardsCreationForm from "./CardsCreationForm";
 import styles from './CardsContainer.module.scss';
 
-export default function CardsContainer(props) {
+export default function CardsContainer() {
     const [cardsArray, setCardsArray] = useState([]);
 
     useEffect(() => {
         mockedApiCall().then(data => setCardsArray(data))
     })
+    //const [cardsArray, setCardsArray] = cardsData;
 
     function handleAddNewCard (valueInput) {
-        cardsArray.push(valueInput)
+        setCardsArray([
+            ...cardsArray,
+            valueInput
+        ]);
         console.log('before', cardsArray);
         console.log('valueInput', valueInput);
     }

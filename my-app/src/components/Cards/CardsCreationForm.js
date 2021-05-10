@@ -1,4 +1,4 @@
-import {useCallback, useState} from "react";
+import {useState} from "react";
 
 export default function CardsCreationForm({onSubmit}) {
     const [valueInput, setValueInput] = useState({
