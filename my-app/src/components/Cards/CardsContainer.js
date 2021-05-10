@@ -1,33 +1,39 @@
-import React, {useEffect, useState} from "react";
+import React, {useCallback, useEffect, useRef, useState} from "react";
 import {mockedApiCall} from "../../api/mockedApi";
 import Card from './Card';
+import CardsCreationForm from "./CardsCreationForm";
 import styles from './CardsContainer.module.scss';
 
-export default class CardsContainer extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            cards: []
-        }
+export default function CardsContainer(props) {
+    const [cardsArray, setCardsArray] = useState([]);
+
+    useEffect(() => {
+        mockedApiCall().then(data => setCardsArray(data))
+    })
+
+    function handleAddNewCard (valueInput) {
+        cardsArray.push(valueInput)
+        console.log('before', cardsArray);
+        console.log('valueInput', valueInput);
     }
 
-    componentDidMount() {
-        mockedApiCall().then(data => {
-            this.setState({cards: data})
-        })
+
+    function handleDeleteCard() {
+
+        //setCardsArray, clickedSubmitButtonForm
+        //cardsArray.splice(card.key, cardKey)
     }
 
-    render() {
-
-        return (
-            this.state.cards ?
+    return (
+        <>
+            <CardsCreationForm onSubmit={handleAddNewCard}/>
+            {!!cardsArray.length ?
                 <div className={styles.cardsContainer}>
-                    {this.state.cards.map((card) => <Card key={card.id} cardData={card}/>)}
+                    {cardsArray.map((card) => <Card key={card.id} onClick={handleDeleteCard} cardData={card}/>)}
                 </div>
                 :
                 <div>No cards yet.</div>
-        )
-    }
+            }
+        </>
+    )
 }
-
-//export default CardsContainer;
