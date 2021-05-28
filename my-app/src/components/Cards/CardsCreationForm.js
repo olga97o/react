@@ -25,13 +25,16 @@ const CardsCreationForm = (({onSubmit}) => {
             onSubmit(valueInput);
             setValueInput({
                 ...valueInput,
+                id: Date.now(),
                 title: '',
                 price: '',
                 gender: '',
-                imageUrl: ''
+                imageUrl: ' '
             });
         } else {
             for (let input of inputArr) {
+                console.log('input.ref', input.ref);
+                console.log('titleRef', titleRef);
                 if (input.value.length === 0) {
                     const portal = document.createElement('div');
                     portal.style.width = '200px';
@@ -41,7 +44,7 @@ const CardsCreationForm = (({onSubmit}) => {
                     input.after(portal);
                 }
                 /*if (input.value.length === 0) {
-                    switch (input.ref) {
+                    switch () {
                         case 'titleRef':
                         titleRef.current.focus();
                             break;

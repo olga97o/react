@@ -94,7 +94,8 @@ a child components as a props.
 
 Task 4:
 
-Summary: implement a validation for the <CardCreationForm /> (the form which is used to create a new <Card /> component).
+Summary: implement a validation for the <CardCreationForm /> (the form which is used to create a new <Card /> component)
+.
 
 Main task: if the user left one of the required inputs empty -> display an error message like ‘this field is required’
 under it (design of the error message is up to you). The user should not be able to add a new card until all the
@@ -108,4 +109,25 @@ Optional task:  in addition to display the error message you can also scroll to 
 
 Note:  the scroll API might not work as you expect (it depends on the position of your form), so if the form is placed
 at the bottom of the page there will be no visual ‘scrolling’ effect. The main idea of the task is to validate your
-form. 
+form.
+
+Task 5:
+
+Summary:
+
+Based on your previous tasks, add 3 routes to your application: login page(/login), your profile page(/pofile), and your
+page with cards(/cards).
+
+Requirements:
+
+1.Your app should redirect the user to a login page (/login). You can do it using the history API from react-router. On
+this login page create a form with 2 inputs (username and password) with a submit button (use mocked logic for login).
+
+2.If the user successfully logged in, he can be able to view the profile(/profile) page and cards(/cards) page.
+
+3.Profile page contains any data you like. (Add 2-3 sentences about yourself).
+
+4.Cards page should contain your <CardsContainer /> component with all the logic you’ve done before (no additional code
+required).
+
+Important note: if the user is not logged in he should NOT able to view /profile and /cards pages. 
