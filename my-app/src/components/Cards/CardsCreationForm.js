@@ -15,8 +15,6 @@ const CardsCreationForm = (({onSubmit}) => {
         imageUrl: ''
     })
 
-
-
     const inputArr = document.getElementsByTagName('input');
 
     const submit = e => {

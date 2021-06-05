@@ -2,37 +2,37 @@
 
 Task1:
 
-Build simple layout using components with React, which are: header, content (main section) and footer.
+1.Build simple layout using components with React, which are: header, content (main section) and footer.
 
-Create store variable and pass it down to components using props.
+2.Create store variable and pass it down to components using props.
 
 Requirements:
 
-use create-react-app as a boilerplate for your application (this one is optional, you can create your own Webpack
+1.use create-react-app as a boilerplate for your application (this one is optional, you can create your own Webpack
 config)
 
-in your project please follow suggested folder structure: (here you can also find your own way on how to make a decent
+2.in your project please follow suggested folder structure: (here you can also find your own way on how to make a decent
 folder structure, this is just my proposal)
 
-index.js file should just import the <App /> component and simply call the ReactDOM.render method. Also you need to
+3.index.js file should just import the <App /> component and simply call the ReactDOM.render method. Also you need to
 store a variable here called store. This variable should be an object with required fields: user (contains firstName and
 lastName) and avatar (contains url and alt).
 
-index.css(index.module.scss/index.scss) should just contain all the basic styles for your app (like rules for html,
+4.index.css(index.module.scss/index.scss) should just contain all the basic styles for your app (like rules for html,
 body)
 
-Each React component should have its own folder with the jsx and relevant stylesheets.
+5.Each React component should have its own folder with the jsx and relevant stylesheets.
 
-Then you need to find a way on how to pass the store value through an App component to use this store value in a child
+6.Then you need to find a way on how to pass the store value through an App component to use this store value in a child
 components (Header, Content). Footer Component can be hardcoded for now.
 
 Optional tasks:
 
-use SCSS as a preprocessor
+1.use SCSS as a preprocessor
 
-use CSS modules
+2.use CSS modules
 
-create an additional index.js file for each component which will just re-export your component. This is always done to
+3.create an additional index.js file for each component which will just re-export your component. This is always done to
 make the import shorter (no hints here, try to research it by yourself)
 
 Task2:
@@ -130,4 +130,28 @@ this login page create a form with 2 inputs (username and password) with a submi
 4.Cards page should contain your <CardsContainer /> component with all the logic you’ve done before (no additional code
 required).
 
-Important note: if the user is not logged in he should NOT able to view /profile and /cards pages. 
+Important note: if the user is not logged in he should NOT able to view /profile and /cards pages.
+
+Task 6:
+
+Summary:
+
+1.Based on your previous tasks integrate Redux for state management (you need both react and react-redux dependencies).
+
+2.Store all the application data into Redux state (e.g. cards data, user data, authorization status).
+
+3.Implementation notes:
+
+1) Create an additional folder in your app ( store, redux or something else). This folder will contain the store of your
+whole application(createStore), all the required reducers for your app (if you have more than 1 reducer, don’t forget
+to combine them), contain all the required actions for your app (type is the only required field for action, other
+fields are up to you). You can create additional folders and files there if you need.
+
+2) For using Redux with React you will need the react-redux library. Don’t forget to wrap the entire components
+hierarchy Provider component and pass the store as a prop to it.
+
+3)Each component, which needs access to a redux store can be wrapped with connect(mapStateToProps, mapDispatchToProps)(
+YourComponent) or you can use hooks (useDispatch, useSelector).
+
+4) Use redux-thunk (purpose of redux-thunk, how to apply it to your store) as middleware in order to ‘teach’ Redux to
+recognize special kinds of actions that are in fact functions.

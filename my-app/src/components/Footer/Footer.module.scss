@@ -1,11 +1,13 @@
 footer {
-    position: absolute;
     background: white;
     width: 98%;
     padding: 5px;
     font-size: 20px;
-    bottom: 0;
-}
-p {
-    color: #000;
+    margin: 0 auto;
+    display: flex;
+    flex: 0 0 auto;
+    p {
+        text-align: center;
+    }
+
 }

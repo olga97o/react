@@ -1,40 +1,39 @@
-import React, {useEffect, useState} from "react";
-import {mockedApiCall} from "../../api/mockedApi";
+import React, {useCallback, useEffect} from "react";
 import Card from './Card';
 import CardsCreationForm from "./CardsCreationForm";
 import styles from './CardsContainer.module.scss';
+import {useSelector, useDispatch, useStore} from "react-redux";
+import {addItem, deleteItem, fetchItems} from "../../store/actions/cardsData";
 
 export default function CardsContainer() {
-    const [cardsArray, setCardsArray] = useState([]);
+
+    const store = useStore();
+    const dispatch = useDispatch();
+    const cards = useSelector(state => state.cardsArray);
 
     useEffect(() => {
-        mockedApiCall().then(data => setCardsArray(data))
-    }, cardsArray)
+        dispatch(fetchItems())
+    }, [])
 
-    function handleAddNewCard(valueInput) {
-        setCardsArray([
-            ...cardsArray,
-            valueInput
-        ]);
-    }
+    const handleAddNewCard = useCallback((valueInput) => {
+        dispatch(addItem(valueInput))
+    }, [dispatch])
 
-    function handleDeleteCard(id) {
-        setCardsArray(
-            cardsArray.filter(card => card.id !== id)
-        )
-        /*const idx = cardsArray.findIndex(card => card.id !== id)
-        setCardsArray([
-            ...cardsArray.slice(0, idx),
-            ...cardsArray.slice(idx + 1)
-        ]);*/
-    }
+    const handleDeleteCard = useCallback((id) => {
+        dispatch(deleteItem(id))
+    }, [dispatch])
 
     return (
         <>
             <CardsCreationForm onSubmit={handleAddNewCard}/>
-            {!!cardsArray.length ?
+            {!!cards.length ?
                 <div className={styles.cardsContainer}>
-                    {cardsArray.map((card) => <Card key={card.id} onClick={() => handleDeleteCard(card.id)} cardData={card}/>)}
+                    {cards.map((card) =>
+                        <Card
+                            key={card.id}
+                            onClick={() => handleDeleteCard(card.id)}
+                            cardData={card}/>
+                    )}
                 </div>
                 :
                 <div>No cards yet.</div>

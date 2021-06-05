@@ -1,0 +1,19 @@
+.profile {
+  display: flex;
+  flex-direction: row;
+  margin: 20px;
+  border: 1px dashed black;
+  width: 80%;
+
+  img {
+    width: 40%;
+    margin: 5px;
+    padding: 5px;
+  }
+
+  aside {
+    text-align: left;
+    margin: 5px;
+    font-size: 20px;
+  }
+}

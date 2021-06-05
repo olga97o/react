@@ -2,8 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import styles from './index.module.scss';
 import App from './App/App';
+import {createStore, applyMiddleware} from 'redux';
+import {Provider} from 'react-redux';
+import {rootReducer} from "./store/reducers/cardsArray";
+import {composeWithDevTools} from "redux-devtools-extension";
+import thunk from 'redux-thunk';
 
-const store = {
+const myStore = {
     user: {
         firstName: 'Shop',
         lastName: 'Online'
@@ -13,7 +18,12 @@ const store = {
         alt: 'Online shop'
     }
 }
+
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
+
 ReactDOM.render(
-    <App userData = {store}/>,
+    <Provider store={store}>
+    <App userData = {myStore}/>
+    </Provider>,
   document.getElementById('root')
 );
