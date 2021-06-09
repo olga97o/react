@@ -20,10 +20,12 @@ const myStore = {
 }
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
+let root = document.getElementById('root');
+root.style.height = '100%';
 
 ReactDOM.render(
     <Provider store={store}>
     <App userData = {myStore}/>
     </Provider>,
-  document.getElementById('root')
+  root
 );

@@ -1,7 +1,7 @@
 import styles from './Header.module.scss';
 import {useHistory} from "react-router-dom";
 import {useDispatch} from "react-redux";
-import {logOut} from "../../store/actions/cardsData";
+import {isLogout} from "../../services/loginService";
 
 export default function Header({userData}) {
 
@@ -11,7 +11,7 @@ export default function Header({userData}) {
     let dispatch = useDispatch();
 
     const logout = () => {
-        dispatch(logOut());
+        isLogout(dispatch);
         history.push('/login');
     }
     return (

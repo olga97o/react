@@ -5,16 +5,16 @@ import {useSelector} from "react-redux";
 export default function Profile() {
 
     let history = useHistory();
-    const auth = useSelector(state => state.authStatus);
+    let auth = useSelector(state => state.authStatus);
 
-    if (auth.length === 0) {
+    if (!auth.length) {
         history.push('/login');
     }
 
     return (
         <div className={styles.profile}>
             <img src="https://zooblog.ru/wp-content/uploads/2021/04/izobrazhenie_2021-04-12_151613.png"/>
-            <aside>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet illo incidunt iusto nesciunt nobis sit
+            <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet illo incidunt iusto nesciunt nobis sit
                 voluptatibus. Assumenda earum, eligendi error, facere non, perferendis quas quos tenetur vero voluptas
                 voluptate voluptatem. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid consectetur
                 excepturi fugit labore molestias numquam quae ratione sunt tempore voluptas. Lorem ipsum dolor sit amet,
@@ -27,7 +27,7 @@ export default function Profile() {
                 voluptate voluptatem. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid consectetur
                 excepturi fugit labore molestias numquam quae ratione sunt tempore voluptas. Lorem ipsum dolor sit amet,
                 consectetur adipisicing elit.
-            </aside>
+            </div>
         </div>
     )
 

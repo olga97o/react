@@ -21,6 +21,8 @@ const CardsCreationForm = (({onSubmit}) => {
         e.preventDefault();
         if (Object.values(valueInput).filter(el => el.length === 0).length === 0) {
             onSubmit(valueInput);
+            let portals = document.querySelectorAll('.portal');
+            portals.forEach(el => el.remove());
             setValueInput({
                 ...valueInput,
                 id: Date.now(),
@@ -35,6 +37,7 @@ const CardsCreationForm = (({onSubmit}) => {
                 console.log('titleRef', titleRef);
                 if (input.value.length === 0) {
                     const portal = document.createElement('div');
+                    portal.className = 'portal';
                     portal.style.width = '200px';
                     portal.style.background = 'red';
                     portal.innerText = "This field is required!";

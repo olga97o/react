@@ -31,8 +31,6 @@ function cardsArray( state = initialState.cards, action) {
         case DELETE_ITEM: {
             const newState = [...state];
             return newState.filter(card => card.id !== action.payload.id);
-            /*console.log(newState.filter(card => card.id !== action.payload.id));
-            return newState;*/
         }
         default:
             return state;

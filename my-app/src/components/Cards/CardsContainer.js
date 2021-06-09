@@ -2,17 +2,19 @@ import React, {useCallback, useEffect} from "react";
 import Card from './Card';
 import CardsCreationForm from "./CardsCreationForm";
 import styles from './CardsContainer.module.scss';
-import {useSelector, useDispatch, useStore} from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
 import {addItem, deleteItem, fetchItems} from "../../store/actions/cardsData";
 
 export default function CardsContainer() {
 
-    const store = useStore();
     const dispatch = useDispatch();
     const cards = useSelector(state => state.cardsArray);
+    let auth = useSelector(state => state.authStatus);
 
     useEffect(() => {
-        dispatch(fetchItems())
+        if (!!auth.length) {
+            dispatch(fetchItems())
+        }
     }, [])
 
     const handleAddNewCard = useCallback((valueInput) => {

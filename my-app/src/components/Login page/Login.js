@@ -1,14 +1,14 @@
 import styles from "./Login.module.scss";
 import {useHistory} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {logIn} from "../../store/actions/cardsData";
+import {isLogin} from "../../services/loginService";
 
 export default function Login() {
 
     let userInput = {};
 
     let history = useHistory();
-    const dispatch = useDispatch();
+    let dispatch = useDispatch();
     const users = useSelector(state => state.usersArray);
 
     const submit = e => {
@@ -16,7 +16,7 @@ export default function Login() {
         let user = users.find(el => el.username === userInput['username'] && el.password === userInput['password']);
 
         if (user) {
-            dispatch(logIn(user));
+            isLogin(dispatch, user);
             history.push("/profile");
         } else {
             console.log('error', user);

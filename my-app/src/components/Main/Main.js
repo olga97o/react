@@ -7,9 +7,9 @@ export default function Main({avatar}) {
     const {alt, image} = avatar;
 
     let history = useHistory();
-    const auth = useSelector(state => state.authStatus);
+    let auth = useSelector(state => state.authStatus);
 
-    if (auth.length === 0) {
+    if (!auth.length) {
         history.push('/login');
     }
 
